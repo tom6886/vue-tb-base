@@ -31,10 +31,5 @@
     "prettier": "^1.18.2",
     "typescript": "^3.4.3",
     "vue-template-compiler": "^2.6.10"
-  },
-  "description": "## Project setup ``` npm install ```",
-  "main": ".eslintrc.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
