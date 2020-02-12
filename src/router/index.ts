@@ -5,7 +5,7 @@ import routes from "./routers";
 
 Vue.use(Router);
 
-export const router = new Router({
+export const router: Router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: routes

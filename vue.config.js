@@ -6,14 +6,14 @@ module.exports = {
   // eslint-loader 是否在保存的时候检查
   lintOnSave: true,
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: config => {
-    config.module
-      .rule("view-design")
-      .test(/view-design.src.*?js$/)
-      .use("babel")
-      .loader("babel-loader")
-      .end();
-  },
+  // chainWebpack: config => {
+  //   config.module
+  //     .rule("view-design")
+  //     .test(/view-design.src.*?js$/)
+  //     .use("babel")
+  //     .loader("babel-loader")
+  //     .end();
+  // },
   // configureWebpack: () => {
   // },
   // vue-loader 配置项

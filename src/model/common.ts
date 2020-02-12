@@ -1,10 +1,10 @@
-export interface R<T> {
+export interface IR<T> {
   code: number;
   msg: string;
   data: T;
 }
 
-export interface Page<T> {
+export interface IPage<T> {
   current: number;
   pages: number;
   total: number;
@@ -12,7 +12,7 @@ export interface Page<T> {
   records: T[];
 }
 
-export interface ResPage {
+export interface IResPage {
   current: string;
   pages: string;
   total: string;
