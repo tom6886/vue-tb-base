@@ -7,7 +7,7 @@ export function transData(data: object) {
 
   let _data = data.data;
 
-  if (isPage(_data)) {
+  if (_data && isPage(_data)) {
     let _page: Page<any> = {
       current: parseInt(_data.current),
       pages: parseInt(_data.current),
