@@ -1,0 +1,40 @@
+@images: "../assets/images";
+.container {
+  position: relative;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.login-layout {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: url('@{images}/login-bg.jpg') no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  .login-box {
+    width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -225px;
+    padding: 50px;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+  }
+
+  .login-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .wb100 {
+    margin-left: 41%;
+  }
+}

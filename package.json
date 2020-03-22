@@ -1,9 +1,10 @@
 {
   "name": "vue-tb-base",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "dev-build": "vue-cli-service build --mode development",
+    "test-build": "vue-cli-service build --mode test",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -11,6 +12,7 @@
     "axios": "^0.19.2",
     "core-js": "^2.6.5",
     "js-cookie": "^2.2.1",
+    "view-design": "^4.1.2",
     "vue": "^2.6.10",
     "vue-class-component": "^7.0.2",
     "vue-property-decorator": "^8.1.0",

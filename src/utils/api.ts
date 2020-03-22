@@ -34,16 +34,17 @@ axios.interceptors.response.use(
       (error.response.status === 401 || error.response.status === 403)
     ) {
       Cookies.remove("accessToken");
-      Cookies.remove("accessRouter");
-      window.location.href = process.env.VUE_APP_LOGOUT_PATH;
+      // router.push({
+      //   name: "login"
+      // });
     }
     return Promise.reject(error);
   }
 );
 
 export function post(url: string, params: any, config?: object) {
-  let token = Cookies.get("accessToken");
-  let headers = {};
+  let token: string | undefined = Cookies.get("accessToken");
+  let headers: object = {};
   if (token) {
     headers = Object.assign(headers, { Authorization: token });
   }
@@ -68,8 +69,8 @@ export function post(url: string, params: any, config?: object) {
 }
 
 export function get(url: string, params?: any) {
-  let token = Cookies.get("accessToken");
-  let headers = {};
+  let token: string | undefined = Cookies.get("accessToken");
+  let headers: object = {};
   if (token) {
     headers = Object.assign(headers, { Authorization: token });
   }
@@ -93,8 +94,8 @@ export function get(url: string, params?: any) {
 }
 
 export function upload(url: string, formData: any) {
-  let token = Cookies.get("accessToken");
-  let headers = { "Content-Type": "multipart/form-data" };
+  let token: string | undefined = Cookies.get("accessToken");
+  let headers: object = { "Content-Type": "multipart/form-data" };
   if (token) {
     headers = Object.assign(headers, { Authorization: token });
   }

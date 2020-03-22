@@ -1,6 +1,7 @@
 import Main from "../views/Main.vue";
+import { RouteConfig } from "vue-router";
 
-export const page404 = {
+export const page404: RouteConfig = {
   path: "/*",
   name: "error-404",
   meta: {
@@ -9,7 +10,7 @@ export const page404 = {
   component: () => import("@/views/error-page/404.vue")
 };
 
-export const appRouter = [
+export const appRouter: RouteConfig[] = [
   {
     path: "/login",
     name: "login",

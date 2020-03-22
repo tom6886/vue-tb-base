@@ -1,6 +1,6 @@
-import { R, ResPage, Page } from "@/model/common";
+import { IR, IResPage, IPage } from "@/model/common";
 
-export function transData(data: object) {
+export function transData(data: any) {
   if (!isR(data) || typeof data.data !== "object") {
     return data;
   }
@@ -8,7 +8,7 @@ export function transData(data: object) {
   let _data = data.data;
 
   if (_data && isPage(_data)) {
-    let _page: Page<any> = {
+    let _page: IPage<any> = {
       current: parseInt(_data.current),
       pages: parseInt(_data.current),
       total: parseInt(_data.total),
@@ -23,11 +23,11 @@ export function transData(data: object) {
   return data;
 }
 
-function isR(object: any): object is R<any> {
+function isR(object: any): object is IR<any> {
   return "code" in object && "msg" in object && "data" in object;
 }
 
-function isPage(object: any): object is ResPage {
+function isPage(object: any): object is IResPage {
   return (
     "current" in object &&
     "pages" in object &&
