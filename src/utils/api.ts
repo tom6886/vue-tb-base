@@ -1,19 +1,20 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { transData } from "./util";
+import qs, { IStringifyOptions } from "qs";
 
 // axios 配置
 axios.defaults.timeout = 6000;
 axios.defaults.baseURL = process.env.VUE_APP_SERVER_URL;
+axios.defaults.withCredentials = true;
 
 // 返回状态判断
 axios.interceptors.response.use(
   res => {
     if (res.data.code === 403) {
+      Cookies.remove("accessRouter");
       Cookies.remove("accessToken");
-      // router.push({
-      //   name: "login"
-      // });
+      // window.location.href = process.env.VUE_APP_LOGOUT_PATH;
     }
 
     if (res.status === 200) {
@@ -33,24 +34,33 @@ axios.interceptors.response.use(
       error.response &&
       (error.response.status === 401 || error.response.status === 403)
     ) {
+      Cookies.remove("accessRouter");
       Cookies.remove("accessToken");
-      // router.push({
-      //   name: "login"
-      // });
+      // window.location.href = process.env.VUE_APP_LOGOUT_PATH;
     }
     return Promise.reject(error);
   }
 );
 
-export function post(url: string, params: any, config?: object) {
+export function post(
+  url: string,
+  params: any,
+  config?: object,
+  qsConfig: IStringifyOptions = { arrayFormat: "repeat" }
+) {
   let token: string | undefined = Cookies.get("accessToken");
-  let headers: object = {};
+  let headers: object = { "Content-Type": "application/x-www-form-urlencoded" };
+
   if (token) {
     headers = Object.assign(headers, { Authorization: token });
   }
 
   if (config) {
     headers = Object.assign(headers, config);
+  }
+
+  if (headers["Content-Type"] === "application/x-www-form-urlencoded") {
+    params = qs.stringify(params, qsConfig);
   }
 
   return new Promise((resolve, reject) => {

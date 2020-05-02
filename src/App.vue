@@ -4,21 +4,10 @@
   </div>
 </template>
 
-<style lang="less">
-.size {
+<style lang="scss">
+#app {
   width: 100%;
   height: 100%;
-}
-
-html,
-body {
-  .size;
   overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-#app {
-  .size;
 }
 </style>

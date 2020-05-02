@@ -1,18 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>vue-tb-base</title>
     <script src="<%= BASE_URL %>compatible.js"></script>
+    <style>
+      html,
+      body,
+      #app {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .avue-home {
+        background-color: #303133;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .avue-home__main {
+        user-select: none;
+        width: 100%;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .avue-home__footer {
+        width: 100%;
+        flex-grow: 0;
+        text-align: center;
+        padding: 1em 0;
+      }
+
+      .avue-home__footer > a {
+        font-size: 12px;
+        color: #ababab;
+        text-decoration: none;
+      }
+
+      .avue-home__loading {
+        height: 32px;
+        width: 32px;
+        margin-bottom: 20px;
+      }
+
+      .avue-home__title {
+        color: #fff;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .avue-home__sub-title {
+        color: #ababab;
+        font-size: 12px;
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but vue-tb-base doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong
+        >We're sorry but vue-tb-base doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      <div class="avue-home">
+        <div class="avue-home__main">
+          <img
+            class="avue-home__loading"
+            src="./svg/loading-spin.svg"
+            alt="loading"
+          />
+          <div class="avue-home__title">
+            正在加载资源
+          </div>
+          <div class="avue-home__sub-title d">
+            初次加载资源可能需要较多时间 请耐心等待
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>

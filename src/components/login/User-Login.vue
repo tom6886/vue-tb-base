@@ -1,34 +1,33 @@
 <template>
-  <div class="login-layout">
-    <div class="login-box">
-      <div class="login-text">用户登录</div>
-      <Form ref="loginForm" :model="user" :rules="loginRules">
-        <FormItem prop="userName">
-          <Input placeholder="请输入用户名" v-model="user.userName">
-            <span slot="prepend">
-              <Icon :size="16" type="ios-person"></Icon>
-            </span>
-          </Input>
-        </FormItem>
-        <FormItem prop="password">
-          <Input
-            placeholder="请输入密码"
-            v-model="user.password"
-            type="password"
-            @on-enter="login"
-          >
-            <span slot="prepend">
-              <Icon :size="14" type="md-lock"></Icon>
-            </span>
-          </Input>
-        </FormItem>
-      </Form>
-      <Button
+  <div>
+    <Form ref="loginForm" :model="user" :rules="loginRules">
+      <FormItem prop="userName">
+        <Input placeholder="请输入用户名" v-model="user.userName">
+          <span slot="prepend">
+            <Icon :size="16" type="ios-person"></Icon>
+          </span>
+        </Input>
+      </FormItem>
+      <FormItem prop="password">
+        <Input
+          placeholder="请输入密码"
+          v-model="user.password"
+          type="password"
+          @on-enter="login"
+        >
+          <span slot="prepend">
+            <Icon :size="14" type="md-lock"></Icon>
+          </span>
+        </Input>
+      </FormItem>
+    </Form>
+    <Button
         type="primary"
         class="wb100"
         :loading="loading"
         @click="sublogin"
         ghost
+        long
         >{{ loginBtn }}</Button
       >
     </div>
@@ -37,13 +36,14 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import Cookies from "js-cookie";
-import { IR } from "@/model/common";
 import { ILoginUser } from "@/model/login";
 import { Form } from "view-design";
+import Cookies from "js-cookie";
 
-@Component
-export default class Login extends Vue {
+@Component({
+  name: "UserLogin",
+})
+export default class UserLogin extends Vue {
   $refs!: {
     loginForm: Form;
   };
@@ -52,16 +52,17 @@ export default class Login extends Vue {
   private loginBtn: string = "登录";
   private user: ILoginUser = {
     userName: "",
-    password: ""
+    password: "",
   };
+
   private loginRules: object = {
     userName: [{ required: true, message: "用户名不能为空", trigger: "blur" }],
-    password: [{ required: true, message: "密码不能为空", trigger: "blur" }]
+    password: [{ required: true, message: "密码不能为空", trigger: "blur" }],
   };
 
   sublogin() {
     const _this = this;
-    _this.$refs.loginForm.validate(valid => {
+    _this.$refs.loginForm.validate((valid) => {
       if (valid) {
         _this.loading = true;
         _this.login();
@@ -82,12 +83,10 @@ export default class Login extends Vue {
 
     Cookies.set("accessToken", res.data);
     this.$router.push({
-      name: "map"
+      name: "map",
     });
   }
 }
 </script>
 
-<style lang="less" scoped>
-@import "./Login.less";
-</style>
+<style></style>
